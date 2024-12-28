@@ -8,7 +8,8 @@
         :key="ekstra.id"
       >
         <div class="card">
-          <img :src="ekstra.gambar" class="card-img-top" :alt="ekstra.nama" />
+          <!-- Gambar Ekstrakurikuler -->
+          <img :src="getImagePath(ekstra.gambar)" class="card-img-top" :alt="ekstra.nama" />
           <div class="card-body">
             <h5 class="card-title">{{ ekstra.nama }}</h5>
             <p class="card-text">{{ ekstra.deskripsi }}</p>
@@ -28,63 +29,36 @@ export default {
         {
           id: 1,
           nama: 'Basket',
-          gambar: '~/assets/img/basket.jpg', 
+          gambar: 'basket.jpeg', 
           deskripsi: 'Ekstrakurikuler olahraga Basket untuk meningkatkan keterampilan bermain bola basket.',
-          link: '/ekstrakurikuler/basket'
         },
         {
           id: 2,
-          nama: 'Paduan Suara',
-          gambar: '~/assets/img/paduan-suara.jpg',
-          deskripsi: 'Ekstrakurikuler menyanyi bersama dalam kelompok untuk mempererat tali persaudaraan.',
-          link: '/ekstrakurikuler/paduan-suara'
+          nama: 'Futsal',
+          gambar: 'futsal.jpeg',
+          deskripsi: 'Futsal adalah olahraga bola kecil yang dimainkan secara tim di lapangan mini.',
         },
         {
           id: 3,
-          nama: 'Futsal',
-          gambar: '~/assets/img/futsal.jpg',
-          deskripsi: 'Futsal adalah olahraga bola kecil yang dimainkan secara tim di lapangan mini.',
-          link: '/ekstrakurikuler/futsal'
-        },
-        {
-          id: 4,
-          nama: 'Paskibra',
-          gambar: '~/assets/img/pencak-silat.jpg',
-          deskripsi: 'Belajar seni bela diri tradisional Indonesia.',
-          link: '/ekstrakurikuler/pencak-silat'
-        },
-        {
-          id: 5,
           nama: 'Fotografi',
-          gambar: '~/assets/img/cj.jpeg',
+          gambar: 'cj.jpeg',
           deskripsi: 'Mengembangkan kemampuan fotografi dan berkreasi dengan kamera.',
-          link: '/ekstrakurikuler/fotografi'
-        },
-        {
-          id: 3,
-          nama: 'Futsal',
-          gambar: '~/assets/img/futsal.jpg',
-          deskripsi: 'Futsal adalah olahraga bola kecil yang dimainkan secara tim di lapangan mini.',
-          link: '/ekstrakurikuler/futsal'
-        },
-        {
-          id: 4,
-          nama: 'Pencak Silat',
-          gambar: '~/assets/img/pencak-silat.jpg',
-          deskripsi: 'Belajar seni bela diri tradisional Indonesia.',
-          link: '/ekstrakurikuler/pencak-silat'
-        },
-        {
-          id: 5,
-          nama: 'Fotografi',
-          gambar: '~/assets/img/cj.jpg',
-          deskripsi: 'Mengembangkan kemampuan fotografi dan berkreasi dengan kamera.',
-          link: '/ekstrakurikuler/fotografi'
-        },
+        }
       ]
+    };
+  },
+  methods: {
+    // Fungsi untuk mendapatkan path gambar
+    getImagePath(image) {
+      // Jika gambar adalah URL eksternal, kembalikan langsung
+      if (image.startsWith('http')) {
+        return image;
+      }
+      // Gambar lokal di folder assets/img
+      return require(`@/assets/img/${image}`);
     }
   }
-}
+};
 </script>
 
 <style scoped>

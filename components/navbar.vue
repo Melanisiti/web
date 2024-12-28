@@ -11,7 +11,7 @@
       <ul class="nav-links" :class="{ active: isMenuActive }">
         <li><NuxtLink to="/">BERANDA</NuxtLink></li>
         <li><NuxtLink to="/profil">PROFIL</NuxtLink></li>
-        <li><NuxtLink to="/jurusan">JURUSAN</NuxtLink></li>
+        <li><NuxtLink to="/jurusan">PROGRAM KEAHLIAN</NuxtLink></li>
         <li><NuxtLink to="/ekskul">EKSTRAKURIKULER</NuxtLink></li>
         <li><NuxtLink to="/galeri">GALERI</NuxtLink></li>
       </ul>

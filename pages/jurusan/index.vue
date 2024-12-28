@@ -2,8 +2,10 @@
   <div class="jurusan-page">
     <h1 class="title">Daftar Jurusan di SMKN 4 Tasikmalaya</h1>
     <div class="jurusan-container">
+      <!-- Looping through jurusanList array to display each jurusan -->
       <div v-for="jurusan in jurusanList" :key="jurusan.id" class="jurusan-card">
-        <img :src="jurusan.image" :alt="jurusan.name" />
+        <!-- Gambar jurusan -->
+        <img :src="`${imgpath}/${jurusan.image}`" :alt="jurusan.name" />
         <h2>{{ jurusan.name }}</h2>
         <p>{{ jurusan.description }}</p>
       </div>
@@ -15,36 +17,32 @@
 export default {
   data() {
     return {
+      imgpath: "~/assets/img",
       jurusanList: [
         {
           id: 1,
-          name: 'Pengembangan Perangkat Lunak dan Gim',
-          description: 'Fokus pada pengembangan aplikasi, perangkat lunak, dan pembuatan gim interaktif.',
-          image: require('~/assets/img/pplg.png')
+          name: 'Pengembangan Perangkat Lunak Dan Gim (PPLG)',
+          description: 'Fokus pada pengembangan perangkat lunak, aplikasi, dan pembuatan gim interaktif.',
         },
         {
           id: 2,
-          name: 'Teknik Komputer dan Jaringan',
-          description: 'Mempelajari jaringan komputer, keamanan sistem, dan administrasi server.',
-          image: require('~/assets/img/tkj.png')
+          name: 'Teknik Komputer dan Jaringan (TJKT)',
+          description: 'Mempelajari jaringan komputer, instalasi, dan perawatan perangkat keras serta keamanan sistem.',
         },
         {
           id: 3,
-          name: 'Desain Komunikasi Visual',
-          description: 'Mengembangkan kreativitas di bidang desain grafis, multimedia, dan animasi.',
-          image: require('~/assets/img/dkv.png')
+          name: 'Teknik Bisnis Sepeda Motor (TBSM)',
+          description: 'Mempelajari teknik perawatan, perbaikan, dan modifikasi sepeda motor.',
         },
         {
           id: 4,
-          name: 'Teknik Sepeda Motor',
-          description: 'Belajar tentang perawatan, perbaikan, dan modifikasi sepeda motor.',
-          image: require('~/assets/img/tsm.png')
+          name: 'Desain Komunikasi Visual (DKV)',
+          description: 'Mempelajari desain grafis, multimedia, animasi, dan pembuatan konten visual untuk berbagai platform.',
         },
         {
           id: 5,
           name: 'Teknik Otomasi Industri',
-          description: 'Menguasai teknologi otomasi dan pengendalian industri modern.',
-          image: require('~/assets/img/toi.png')
+          description: 'Menguasai teknologi otomatisasi dan sistem pengendalian industri untuk berbagai sektor manufaktur.',
         }
       ]
     };
@@ -59,7 +57,7 @@ export default {
 }
 
 .title {
-  font-size: 2em;
+  font-size: 2.5em;
   margin-bottom: 20px;
   color: #333;
 }
@@ -102,5 +100,22 @@ export default {
 
 .jurusan-card:hover {
   transform: translateY(-5px);
+}
+
+/* Responsivitas */
+@media (max-width: 768px) {
+  .jurusan-container {
+    justify-content: space-between;
+  }
+
+  .jurusan-card {
+    width: 45%; /* 2 kolom di layar lebih kecil */
+  }
+}
+
+@media (max-width: 480px) {
+  .jurusan-card {
+    width: 100%; /* 1 kolom penuh pada layar lebih kecil */
+  }
 }
 </style>
